@@ -42,15 +42,15 @@ int main(int argc, char** argv)
 	{
 		if (pcl::console::find_argument(argc, argv, "-s") >= 0 || pcl::console::find_argument(argc, argv, "-sf") >= 0)
 		{
-			cloud->points[i].x = 1024 * rand() / (RAND_MAX + 1.0);
-			cloud->points[i].y = 1024 * rand() / (RAND_MAX + 1.0);
+			cloud->points[i].x = (rand() / (RAND_MAX + 1.0) - 0.5) * 0.99;
+			cloud->points[i].y = (rand() / (RAND_MAX + 1.0) - 0.5) * 0.99;
 			if (i % 5 == 0)
-				cloud->points[i].z = 1024 * rand() / (RAND_MAX + 1.0);
+				cloud->points[i].z = (rand() / (RAND_MAX + 1.0) - 0.5) * 0.99;
 			else if (i % 2 == 0)
-				cloud->points[i].z = sqrt(1 - (cloud->points[i].x * cloud->points[i].x)
+				cloud->points[i].z = sqrt(0.25 - (cloud->points[i].x * cloud->points[i].x)
 					- (cloud->points[i].y * cloud->points[i].y));
 			else
-				cloud->points[i].z = -sqrt(1 - (cloud->points[i].x * cloud->points[i].x)
+				cloud->points[i].z = -sqrt(0.25 - (cloud->points[i].x * cloud->points[i].x)
 					- (cloud->points[i].y * cloud->points[i].y));
 		}
 		else
